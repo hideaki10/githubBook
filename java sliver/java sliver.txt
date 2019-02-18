@@ -88,6 +88,65 @@
 
 # 4 配列の作成と使用
 
+1. new int[0] でもコンパイルエラーにならない
+
+2. 配列宣言
+
+   2.1　int[] a  int a[]
+
+   2.2    int[]  a[]   int [] [] a  int a[] []
+
+   2.3    int[] array[] []  int[] [] array[]
+
+3. 要素の指定のとき、データ型変換は行わない、宣言したデータ型しか使えない
+
+4. 2次元配列宣言　1次元の配列の要素数を先に記述しなければならない。
+
+5. 配列インスタンス生成・初期化のとき
+
+   5.1　int[] a = {2,3}  int[] a = new int[]{2,3}  int[] a = {} →　ok  
+
+   int[] a = new int[2]{2,3} →　エラーになる　　int[] a ; a={2,3} →　エラーになる
+
+   5.2   new と初期化演算子の両方を使って配列のインスタンス生成と初期化を同時に行う場合、要素数は自動算出されるため、大カッコ中に要素数は指定できない
+
+   5.3　初期化演算子を使って、配列のインスタンス生成と初期化を同時に行う場合、変数の宣言と参照の代入も同時に行う。セミコロン「；」を使って変数宣言と配列のインスタンス生成のタイミングを分けることはできない
+
+   
+
+6. ```java
+   public class Test {
+   
+       public static void main(String[] args){
+           String[][] array = {{"A","B"},null,{"C","D","E"}};
+           int total = 0;
+           for(String[] tmp:array){
+               total += tmp.length;
+           }
+       }
+   }
+   ```
+
+```java
+// public interface A{}
+
+// public abstract class B implements A{}
+
+// public class c extends B{}
+
+// public class d extends C{}
+
+
+
+public class Test {
+
+    public static void main(String[] args){
+          A{}  array = {newC(),null,new D()};
+          Object [] objArray = array;
+    }
+}
+```
+
 # 5 ループ構造と使用
 
 # 6 メソッドとカプセル化び操作
