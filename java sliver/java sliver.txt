@@ -188,6 +188,143 @@ public static void main(String[] args){
 
 # 6 メソッドとカプセル化び操作
 
+```java
+public static void main(String[] args){
+        
+    Sample s = new Sample();
+     ? result = s.divide(10,2);
+     System.out.println(result);
+    
+}
+
+
+public class Sample{
+    float divide(int a ,int b){
+        return (float)a/(float)b;
+    }
+}
+```
+
+
+
+6
+
+```java
+public void method(int num){
+        if(num<0)return;
+        System.out.println("A");
+        return;
+        System.out.println("B");
+}
+```
+
+6.1 return 文の後ろ処理は実行できない、もしreturn文を実行したあとに何らかの処理をするようなコードを記述するとコンパイルエラーになる
+
+
+
+7
+
+```java
+public static void main(String[] args){
+    
+    Sample.num = 10;
+    Sample s = new Sample();
+    Sample s2 = new Sample();
+    s.num += 10;
+    s2.num = 30;
+    System.out.println(Sample.num);
+}
+
+public class Sample{
+    static int num = 0;
+}
+```
+
+static なフィールドは「クラス名.フィールド名」、もしくはインスタンスの作成後であれば、「変数名.フィールド名」のどちらでもアクセスできる
+
+
+
+static ではメソッドからは,staticなフィールドにアクセスできる      ○
+
+static ではないメソッドからは、staticなメソッドを呼び出せない　☓
+
+
+
+public void sample {
+
+​	{ 
+
+​		初期化ブロックで行う共通の処理
+
+​	}
+
+}
+
+
+
+コンストラクタうちから、オーバーロードされたほかのコンストラクタを呼び出すにはthisを使う
+
+
+
+```java
+package other;
+import ex18.Parent
+
+public class Chile extends Parent {
+
+    public static void main(String[] args){
+        System.out.println(num);
+
+    }
+
+    
+    package ex18;
+    
+    public class Parent{
+        int num = 10;
+    }
+
+}
+```
+
+
+
+
+
+```java
+package other;
+public class Book{
+    
+    private String isbn;
+    public  void setIsbn(String isbn){
+        this.isbn = isbn;
+    }
+    
+    protected void printInfo(){
+        System.out.println(isbn);
+    }
+    
+}
+
+
+package ex19;
+import other.Book;
+public class StoryBook extends Book(){}
+
+package ex19;
+public class Main(){
+    public static void main(String[] args){
+        StoryBook story = new StoryBook();
+        story.setIsbn("======");
+        story.printInfo();
+         }
+     }
+```
+
+
+
+
+
 # 7 継承の操作
 
 # 8 例外の処理
