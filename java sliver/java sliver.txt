@@ -327,6 +327,211 @@ public class Main(){
 
 # 7 継承の操作
 
+```java
+abstract class AbstractSample{
+    public void sample(){
+        System.out.println("A");
+        test();
+        System.out.println("B");
+    }
+    protected void test(){}
+}
+
+class ConcreteSample extends AbstractSample{
+    protected void test(){
+        System.out.println("B");
+    }
+}
+
+public static void main(String[] args){
+    AbstractSample s = new AbstractSample() {
+        s.sample();
+    }
+}
+```
+
+
+
+１。オーバーライド３つルール
+
+　　１．１シグニチャが同じであること
+
+　　１．２戻り値は同じか、サブクラスであること
+
+　　１・３アクセス修飾子は同じか、よりゆるいもの
+
+
+
+```java
+class A{
+    String val = "A";
+    void print(){
+        System.out.println(val);
+    }
+}
+
+class B extends A {
+    String val = "B";
+}
+
+
+public class  Main{
+    public static void main(String[] args){
+        A a = new A();
+        A b = new B();
+        System.out.println(a.val);
+        System.out.println(b.val);
+        
+        a.print();
+        b.print();
+    }
+}
+```
+
+
+
+
+
+```java
+public interface A {
+    
+}
+
+public class B implements  A{}
+
+public class C extends B{
+    
+}
+public class  D{}
+
+public class  Main{
+    public static void main(String [] args){
+        A[] array ={
+                new B(),
+                new C(),
+                new A(),
+                new D()
+        };
+    }
+        
+}
+```
+
+
+
+
+
+```java
+class A {
+    void hello(){
+        System.out.println("A");
+    }
+}
+
+
+class B extends A{
+    void hello(){
+        System.out.println("B");
+    }
+}
+
+public class  Main{
+    public static void main(String[] args){
+        A a = new A();
+        B b = (B)a;
+        b.hello();
+    }
+}
+```
+
+
+
+
+
+```java
+class Parent{
+    String name;
+    String getName(){
+        return this.name;
+    }
+    
+}
+
+public class Child extends Parent{
+    String name;
+}
+
+public class  Main{
+    public static void main(String[] args){
+        Child child = new Child();
+        child.name = "smaple";
+        System.out.println(child.getName());
+    }
+}
+```
+
+
+
+
+
+```java
+class A{
+    public A(){
+        System.out.println("A");
+    }
+}
+
+class B extends A{
+    public B(){
+        System.out.println("B");
+    }
+}
+public class  Main{
+    public static void main(String[] args){
+        A a = new B();
+    }
+}
+```
+
+
+
+```java
+class Parent{
+
+    public Parent(){
+        System.out.println("A");
+    }
+    
+    public Parent(String val){
+        this();
+        System.out.println(val);
+    }
+}
+
+
+public class Child extends Parent{
+    public Child(){
+        super("B");
+        System.out.println("C");
+    }
+    
+    public Child(String val){
+        this();
+        System.out.println(val);
+    }
+}
+
+public class  Main{
+    public static void main(String[] args){
+        new Child("D");
+    }
+}
+```
+
+
+
+
+
 # 8 例外の処理
 
 # 9 java APIの主要なクラス操作
