@@ -20,7 +20,6 @@
 
 3. java コマンドの構文
 
-
    3.1 java 完全修飾クラス名　引数1　引数2
    3.2 引数1,引数2は起動パラメータやコマンドライン引数と呼ぶ
 
@@ -534,4 +533,73 @@ public class  Main{
 
 # 8 例外の処理
 
+OutOfMemoryError
+
+
+
+VirtualMachineError
+
+
+
+InternalError
+
+
+
+NoClassDefFoundError
+
+
+
+Exception InInitializerError
+
+
+
+NullPointerException
+
+
+
+stackOverflowError
+
+
+
 # 9 java APIの主要なクラス操作
+
+StringBuilderクラス
+
+StringBuilderクラスのメソッド
+
+1.str.trim()
+
+2.str.charAt()
+
+3.str.indexOf()
+
+4.str.substring()
+
+5.str.startsWitch()
+
+6.str.split()
+
+7 str.append()
+
+8.str.delete()
+
+9.str.deleteCharAt()
+
+10.str.reverse()
+
+11.str.replace()
+
+ラムダ式
+
+Predicateインタフェース
+
+LocalDateクラス、LocalTimeクラス、各クラスのメソッド
+
+Durationクラス、Durationクラスのメソッド
+
+Periodクラス,Periodクラスのメソッド
+
+DataTimeFormatterクラス、formatメソッド
+
+ArrayListクラス、ArrayListクラスのメソッド
+
