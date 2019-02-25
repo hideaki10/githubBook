@@ -561,6 +561,8 @@ stackOverflowError
 
 
 
+
+
 # 9 java APIの主要なクラス操作
 
 StringBuilderクラス
@@ -579,21 +581,31 @@ StringBuilderクラスのメソッド
 
 6.str.split()
 
-7 str.append()
+7 Stringbuilder.append()
 
-8.str.delete()
+8.Stringbuilder.delete()
 
-9.str.deleteCharAt()
+9.Stringbuilder.deleteCharAt()
 
-10.str.reverse()
+10.Stringbuilder.reverse()
 
-11.str.replace()
+11.Stringbuilder.replace()
+
+12.str.concat()
+
+Stringbuilderディフォルトで16文字分のバッファを持っている
+
+
 
 ラムダ式
 
 Predicateインタフェース
 
 LocalDateクラス、LocalTimeクラス、各クラスのメソッド
+
+
+
+
 
 Durationクラス、Durationクラスのメソッド
 
@@ -603,3 +615,45 @@ DataTimeFormatterクラス、formatメソッド
 
 ArrayListクラス、ArrayListクラスのメソッド
 
+```java
+1
+public class Main{
+    public static void main(String[] args) {
+        LocalTime localTime = LocalTime.of(0,1,2);
+        localTime.plusHours(12);
+        System.out.println(time);
+    }
+}
+
+2
+public class Sample{
+    public static void main(String[] args){
+        LocalDateTime start =LocalTime.of(2015,1,1,0,0);
+        LocalDateTime end = LocalTime.of(2015,1,2,1,0,0);
+        Duration d = Duration.between(start,end);
+        System.out.println(d.toHours());
+    }
+}
+3
+public class Main{
+    public static void main(String[] args) {
+        LocalDate now = LocalDate.now();
+        LocalDate target = now.plusDays(10);
+
+        System.out.println(x.getDays());
+        //画面に10と表示したい
+    }
+}
+
+4
+public class Sample{
+    public static void main(String[] args){
+        LocalDateTime start =LocalTime.of(2015,1,1,0,0);
+        String str = time.format();
+        System.out.println(str);
+        //2015-08-31T00:00:00と表示したい
+    }
+}
+5
+ArrayList 
+```
