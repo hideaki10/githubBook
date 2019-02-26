@@ -1,4 +1,4 @@
-# 1 javaの基本
+﻿# 1 javaの基本
 
 1. パッケージ宣言に関するルール
    1.1 必ずソースコードの先頭行に記述する
@@ -603,7 +603,8 @@ Predicateインタフェース
 
 LocalDateクラス、LocalTimeクラス、各クラスのメソッド
 
-
+localDate.until
+localDate.minuns
 
 
 
@@ -648,12 +649,214 @@ public class Main{
 4
 public class Sample{
     public static void main(String[] args){
-        LocalDateTime start =LocalTime.of(2015,1,1,0,0);
+        LocalDateTime time =LocalTime.of(2015,1,1,0,0);
         String str = time.format();
         System.out.println(str);
         //2015-08-31T00:00:00と表示したい
+        //DateTimeFormatter.BASIC_ISO_DATE
+	//DateTimeFormatter.ISO_ZONED_DATE_TIME
+	//DateTimeFormatter.ISO_INSTANT
+	//DateTimeFormatter.ISO_DATE_TIME
     }
 }
+
 5
-ArrayList 
+public class Sample{
+    public static void main(String[] args){
+        LocalDate a = LocalDate.of(2015,0,1);
+        LocalDate b = LocalDate.parse("2015-01-01");
+        System.out.println(a.equals(b));
+        
+        
+        
+    }
+}
+
+```
+
+ラムダ式
+
+```java
+6
+
+
+public class Main{
+    public static void main(String[] args){
+        
+        Function f = (name)-> "hello." + name;
+        // Function f = (name) ->{return "hello." + name;}
+       	// Function f = (name) ->{ "hello." + name;}
+	// Function f = name ->{return "hello." + name;}
+	// Function f = (name) ->return "hello." + name;
+        System.out.println(f.test("Lambda"));
+    }
+    
+    private static interface Function{
+        String test(String name);
+    }
+}
+
+```
+１．メソッド内で宣言したローカル変数と同じ名前の変数をラムダ式の引数として使うことができない
+２．ラムダ式外で宣言されたローカル変数にラムダ式内からアクセスするには、自質にfinalな変数でなければいけない
+
+
+7ArrayList 
+
+```java
+1
+public class Sample{
+    public static void main(String[] args){
+
+        ArrayList list = new ArrayList<>();
+        
+        list.add("A");
+        list.add(10);
+        list.add("B");
+        for(Object obj: list){
+            System.out.println(obj);
+        }
+
+    }
+}
+2
+public class Sample{
+    public static void main(String[] args){
+
+        ArrayList<String> list = new ArrayList<>();
+
+        list.add("A");
+        list.add(2,"B");
+        list.add("C");
+        list.add("D");
+
+
+        for(String str:list){
+            System.out.println(str);
+        }
+
+    }
+}
+
+3
+
+public class Sample{
+    public static void main(String[] args){
+
+        ArrayList<String> list = new ArrayList<>();
+
+        list.add("A");
+        list.add(0,"B");
+        list.add("C");
+        list.add(1,"D");
+
+
+        for(String str:list){
+            System.out.println(str);
+        }
+
+    }
+}
+
+
+4
+
+public class Item{
+    private String name;
+    private int price;
+    public Item(String name,int price){
+        this.name = name;
+        this.price = price;
+    }
+
+    public boolean equals(Object obj){
+        if(obj instanceof Item){
+            Item tmp = (Item)obj;
+            if(tmp.name.equals(this.name));
+                return true;
+        }
+        return false;
+    }
+    
+    public String getName(){
+        return name;
+        
+    }
+}
+
+public class Main{
+    public  static void main(String [] args){
+        ArrayList<Item> list = new ArrayList<>();
+        list.add(new Item("A",100));
+        list.add(new Item("B",200));
+        list.add(new Item("C",300));
+        list.add(new Item("A",100));
+        list.remove(new Item("A",500));
+        for (Item item:list){
+            System.out.println(item.getName());
+        }
+    }
+}
+
+
+5
+
+
+public class Main{
+    public  static void main(String [] args){
+        ArrayList<String> list = new ArrayList<>();
+        list.add("A");
+        list.add("B");
+        list.add("C");
+
+        for (String str:list){
+            if("B".equals(str)){
+                list.remove(str);
+            }else {
+                System.out.println(str);
+            }
+        }
+    }
+}
+
+6
+
+public class Main{
+    public  static void main(String [] args){
+        ArrayList<String> list = new ArrayList<>();
+        list.add("A");
+        list.add("B");
+        list.add("C");
+        list.add("D");
+        list.add("E");
+        for (String str:list){
+            if("C".equals(str)){
+                list.remove(str);
+            }
+        }
+        for (String str:list){
+            System.out.println(str);
+        }
+    }
+}
+
+7
+
+public class Main{
+    public  static void main(String [] args) {
+        List<String> list = new ArrayList<>(
+                Arrays.asList(new String[]{"A","B","C"})
+        );
+        
+        list.removeIf(
+                (String s)->{
+                    return s.equals("B");
+                }
+        );
+        
+        System.out.println(list);
+    }
+}
+
+
 ```
