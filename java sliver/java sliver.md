@@ -67,19 +67,19 @@
 
 - 6 switch文のcase値として使用できる値　
 
-  * 6.1　条件式に戻り値と同じ型か互換性がある型であること
+    * 6.1　条件式に戻り値と同じ型か互換性がある型であること
 
-　　* 6.2    定数であるか、コンパイル時に値を決めることができること
+    * 6.2  定数であるか、コンパイル時に値を決めることができること
 
-　　* 6.3    nullでないこと　
+　  * 6.3  nullでないこと　
 
--　7 switch 文の条件式　
+- 7 switch 文の条件式　
 
-　　* 7.1 int型以下の整数型　と　そのラッパークラス
+　　* 7.1  int型以下の整数型　と　そのラッパークラス
 
-　　* 7.2 文字と文字列　
+　　* 7.2  文字と文字列　
 
-　　* 7.3 列挙型　eum 
+　　* 7.3  列挙型 eum 
 
 　　　　
 
@@ -856,5 +856,177 @@ public class Main{
     }
 }
 
+
+```
+
+# 10 総仕上げ問題
+
+* Javaの実行環境　→　Javaプログラムを実行するには、JVMを含む実行環境(ランタイム)環境が必要、コンパイル済みクラスファイ　ルがあればコンパイルは実行に必要がない
+
+```java 
+1
+public class Main{
+    public static void mian(String[] args){
+        String[] array = {"abcde","fgh","ijk"};
+        String[] array2 = new String[3];
+        
+        int i = 0;
+        try{
+            for (String str:array){
+                array2[i] = str.substring(1,4);
+            }
+        }
+        catch (Exception e){
+            System.out.println("Error");
+        }
+        for(String a : array2){
+            System.out.println(s);
+        }
+    }
+    
+}
+
+//画面にどんな結果が表示される
+
+```
+
+* Javaプログラムのエントリーポイントとなるmainメソッドは、その定義が決まっています。変更できるのは引数の変数名だけで、そ　の他は変更できません。エントリーポイントになるのは、String配列型の引数を受け取るものだけ。
+
+* for文には、従来からある標準for文と、Java se5で導入された拡張for文の2種類
+  拡張for for(Stting str:array){}
+  標準for for(int i=0;i<10;i++){}
+
+
+```java
+2
+public class Main{
+    public static void mian(String[] args){
+        List<String> list = new ArrayList<>();
+
+
+        try{
+            while(true){
+                //trueは無限ループとなる
+                list.add("hello");
+            }
+        }
+        catch (RuntimeException e){
+            System.out.println("A");
+        }
+        catch (Exception e){
+            System.out.println("B");
+        }
+
+        System.out.println("C");
+    }
+
+}
+```
+
+```java
+
+3
+public class Main{
+    public static void mian(String[] args){
+        String[] str = new String[2];
+        int i= 0;
+        
+        for(String s :str){
+            str[i].concat("e"+i);
+            i++;
+        }
+        for(i = 0;i<str.length;i++){
+            System.out.println();
+        }
+    }
+}
+```
+```java
+4
+public class Main{
+    public static void mian(String[] args) {
+        int num = 9;
+        if(num++ < 10){
+            System.out.println(num);
+        }else {
+            System.out.println("B");
+        }
+    }
+}
+
+```
+
+
+```java
+5
+public class Main{
+    public static void mian(String[] args) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("java");
+        //
+        System.out.println(sb);
+        /*
+        * sb.add(0,"Hello")
+        * sb.ser(0,"Hello")
+        * sb.insert(0,"Hello")
+        * sb.append(0,"Hello")
+        * */
+    }
+}
+```
+
+
+```java
+6
+public class Main{
+    public static void mian(String[] args) {
+ 
+        String[][] array = new String[][];
+        array[0]=new String[2];
+        array[1]=new String[5];
+        
+        int i = 97;
+        for(int a = 0;a<array.length;a++) {
+            for (int b = 0; b < array.length; b++) {
+                    array[a][b] = "" + i;
+                    i++;
+            }
+        }
+        
+        for(String[] tmp: array){
+            for(String s :tmp){
+                System.out.println(s+"");
+            }
+            System.out.println();
+        }
+        
+        //画面にどんな結果が表示される
+        //nullpointexception と思った　☓
+    }
+}
+```
+
+```java
+7
+
+class X {
+    public void print(){
+        throw new IOException();    
+    }
+}
+
+public class Sample{
+    public static void main(String[] args){
+        X obj = new X();
+        obj.print();
+    }
+}
+
+//コンパイルエラーになるため、修正する
+// public static void main(String[] args) throws Exception
+// try{obj.print}catch(Exception e){}catch(IOException e){}
+// public void print() throws IOException
+// throw new IOException();    を　throw IOException("Error")　に置き換える
+// obj.print(); の下に　throw new IOException();　を追記する
 
 ```
